@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block mainblock %}
+{% for gifs in all_gifs%}
+<img src="{{gifs.url}}" alt="{{gifs.title}} width=" 500" height="600">
+{% endfor %}
+{% endblock %}

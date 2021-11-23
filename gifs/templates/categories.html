@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block mainblock %}
+
+{% for category in all_categories %}
+{{category.name}}, <a href="{%url 'category' category.id %}" class="btn btn-primary">Go to the category view</a>
+{% endfor %}
+
+{% endblock %}
