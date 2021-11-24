@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Gif_Model, Category
 
 # Create your views here.
@@ -17,4 +17,14 @@ def categories(request):
 
 def gif(request, gif_id):
     gif = Gif_Model.objects.get(id = gif_id)
-    return render (request, 'gif.html', {'gif':gif} )
+    return render (request, 'gif.html', {'gif':gif})
+
+def gif_like_action(request, gif_id, liked):
+    gif = Gif_Model.objects.get (id = gif_id)
+    if liked:
+        gif.likes += 1
+        
+    else:
+        gif.likes -=1
+    gif.save()
+    return redirect('gif', gif.id)
